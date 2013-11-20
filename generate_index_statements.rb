@@ -34,7 +34,7 @@ class IndexStatementExtractor
       statements << '' << "ALTER TABLE #{table}" if data.count > 0
       data.each do |t|
         t =~ /\s*(([A-Z][A-Z\ ])*\ KEY)\s+\`(\S+)\`\s+\((.*)\)/
-        statements << "ADD #{$1} \`#{$3}\` (#{$4}),".gsub('KEY', 'INDEX')
+        statements << "ADD #{$1} \`#{$3}\` (#{$4}),".gsub('KEY', 'INDEX').gsub(/\s+/, ' ')
       end
       statements[-1][-1] = ';' if data.count > 0
     end
