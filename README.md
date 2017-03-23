@@ -112,3 +112,12 @@ You can copy and paste to your SQL console the DROP statements for step 2, and t
 ## Caution
 
 If you have a large database, altering tables can take a very long time. Be sure to run those commands via screen or tmux so that your session isn't lost if you lose your SSH connection.
+
+## Contributing and Testing
+
+Contributions are welcome! Please run the tests to ensure you have not broken anything:
+
+```
+bundle install
+bundle exec rspec spec
+```

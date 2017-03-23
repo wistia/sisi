@@ -1,0 +1,30 @@
+
+DROP statements:
+
+DROP INDEX `index_users_on_name` ON accounts;
+DROP INDEX `index_accounts_on_cname` ON accounts;
+DROP INDEX `index_photos_on_hashed_id` ON photos;
+DROP INDEX `index_photos_on_parent_id` ON photos;
+DROP INDEX `index_photos_on_user_id_and_foreign_id` ON photos;
+DROP INDEX `index_photos_on_md5` ON photos;
+DROP INDEX `index_photos_on_on_s3` ON photos;
+DROP INDEX `index_s3_uploads_on_photo_id` ON s3_uploads;
+DROP INDEX `index_s3_uploads_on_failed_at` ON s3_uploads;
+
+CREATE statements:
+
+ALTER TABLE accounts
+ADD UNIQUE INDEX `index_users_on_name` (`name`),
+ADD INDEX `index_accounts_on_cname` (`cname`);
+
+ALTER TABLE photos
+ADD UNIQUE INDEX `index_photos_on_hashed_id` (`hashed_id`),
+ADD INDEX `index_photos_on_parent_id` (`parent_id`),
+ADD INDEX `index_photos_on_user_id_and_foreign_id` (`account_id`,`foreign_id`),
+ADD INDEX `index_photos_on_md5` (`md5`),
+ADD INDEX `index_photos_on_on_s3` (`on_s3`);
+
+ALTER TABLE s3_uploads
+ADD UNIQUE INDEX `index_s3_uploads_on_photo_id` (`photo_id`),
+ADD INDEX `index_s3_uploads_on_failed_at` (`failed_at`);
+
