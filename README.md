@@ -121,3 +121,7 @@ Contributions are welcome! Please run the tests to ensure you have not broken an
 bundle install
 bundle exec rspec spec
 ```
+
+## License
+
+You are free to use this code in accordance with the [MIT License](LICENSE.md).
