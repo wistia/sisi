@@ -1,4 +1,3 @@
-
 class IndexStatementExtractor
   def extract(filepath)
     table_indices = extract_statements(filepath)
@@ -31,12 +30,13 @@ class IndexStatementExtractor
   def indices_to_creates(table_indices)
     statements = []
     table_indices.each do |table, data|
-      statements << '' << "ALTER TABLE #{table}" if data.count > 0
+      statements << "ALTER TABLE #{table}" if data.count > 0
       data.each do |t|
         t =~ /\s*(([A-Z][A-Z\ ])*\ KEY)\s+\`(\S+)\`\s+\((.*)\)/
         statements << "ADD #{$1} \`#{$3}\` (#{$4}),".gsub('KEY', 'INDEX').gsub(/\s+/, ' ')
       end
       statements[-1][-1] = ';' if data.count > 0
+      statements << '' if data.count > 0
     end
     statements
   end
