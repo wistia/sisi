@@ -6,8 +6,8 @@ This script takes a SQL structure dump (i.e. a sequence of `CREATE TABLE` comman
 
 At Wistia, we've found this useful in two situations:
 
-1. When importing large tables from one database to another, we can transfer the data faster if the target database does not need to build all the indices as the data arrive. We achieve this by dropping all the indices on the target database before the import, and then rebuilding them when the import is complete. This may increase the total time to get the target database up to a production spec, but it minimizes the time needed to ingest the data. This is critically important if we have a narrow time window to work with. For example, when creating a replica while splitting a shard, we need to ensure our import takes less time than our replication logs are persisted for.
-2. Amazon's Database Migration Service does not support importing of secondary indices. When moving a database to the AWS Relational Database Service, we need to recreate our indices after the import.
+1. When importing large tables from one database to another, we can transfer the data faster if the target database does not need to build all the indices as the data arrive. We achieve this by dropping all the indices on the target database before the import, and then we rebuild them when the import is complete. This may increase the total time to get the target database up to a production spec, but it minimizes the time needed to ingest the data. This is critically important if we have a narrow time window to work with. For example, when creating a replica while splitting a shard, we need to ensure our import takes less time than our replication logs are persisted for.
+2. Amazon's Database Migration Service does not support importing secondary indices. When moving a database to the AWS Relational Database Service, we need to recreate our indices after the import.
 
 This tool provides commands you can cut and paste (we recommend proofreading, though!) into a SQL prompt to drop and regenerate all of your indices.
 
