@@ -1,4 +1,4 @@
-# SQL INDEX Statement Inducer
+# SISI: SQL INDEX Statement Inducer
 
 This script takes a SQL structure dump (i.e. a sequence of `CREATE TABLE` commands), and translates them into a series of `DROP INDEX` and `ADD INDEX` statements. `ADD INDEX` statements against the same table are grouped within a single `ALTER TABLE` command, so you only rebuild a table once no matter how many indices it has.
 
