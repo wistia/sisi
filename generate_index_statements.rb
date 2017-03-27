@@ -2,13 +2,13 @@ class IndexStatementExtractor
   def extract(filepath)
     table_indices = extract_statements(filepath)
     puts
-    puts 'DROP statements:'
+    puts '# DROP statements:'
     puts
     indices_to_drops(table_indices).each do |stmt|
       puts stmt
     end
     puts
-    puts 'CREATE statements:'
+    puts '# CREATE statements:'
     puts
     indices_to_creates(table_indices).each do |stmt|
       puts stmt

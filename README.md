@@ -77,7 +77,7 @@ This tool facilitates steps 2 and 4. Run:
 and we get:
 
 ``` sql
-DROP statements:
+# DROP statements:
 
 DROP INDEX `index_users_on_name` ON accounts;
 DROP INDEX `index_accounts_on_cname` ON accounts;
@@ -89,7 +89,7 @@ DROP INDEX `index_photos_on_on_s3` ON photos;
 DROP INDEX `index_s3_uploads_on_photo_id` ON s3_uploads;
 DROP INDEX `index_s3_uploads_on_failed_at` ON s3_uploads;
 
-CREATE statements:
+# CREATE statements:
 
 ALTER TABLE accounts
 ADD UNIQUE INDEX `index_users_on_name` (`name`),
